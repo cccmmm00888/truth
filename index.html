@@ -2,36 +2,33 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>📦 Lazada ลิงก์ลับ</title>
+  <title>🛍️ Lazada ลิงก์พิเศษ</title>
 
-  <!-- OG Preview -->
-  <meta property="og:title" content="📢 โปรโมชั่นลับจาก Lazada!">
-  <meta property="og:description" content="ลดพิเศษ ลับเฉพาะ ลิงก์นี้เท่านั้น!">
+  <!-- OG สำหรับ Facebook preview -->
+  <meta property="og:title" content="🔥 ลดพิเศษจาก Lazada!">
+  <meta property="og:description" content="คลิกดูดีลพิเศษในแอปลาซาด้าเท่านั้น!">
   <meta property="og:image" content="https://iili.io/3HaU3iv.gif">
   <meta property="og:url" content="https://cccmmm00888.github.io/truth/">
 
-  <style>
-    body {
-      font-family: sans-serif;
-      text-align: center;
-      padding: 50px;
-    }
-    a.button {
-      background: #1a73e8;
-      color: white;
-      padding: 15px 25px;
-      text-decoration: none;
-      font-size: 20px;
-      border-radius: 8px;
-      display: inline-block;
-      margin-top: 30px;
-    }
-  </style>
+  <script>
+    // deeplink เข้าแอปลาซาด้าโดยตรง (เฉพาะมือถือที่มีแอปติดตั้ง)
+    const deeplink = "lazada://s.lazada.co.th/s.MRiSA";
+
+    // fallback สำหรับเปิดเว็บ ถ้าเข้าแอปไม่ได้
+    const fallback = "https://s.lazada.co.th/s.MRiSA?cc";
+
+    // พยายามเปิดแอปก่อน
+    setTimeout(() => {
+      window.location.href = deeplink;
+    }, 200);
+
+    // ถ้าไม่สำเร็จภายใน 2.5 วินาที ให้ fallback
+    setTimeout(() => {
+      window.location.href = fallback;
+    }, 2800);
+  </script>
 </head>
 <body>
-  <h1>🎉 โปรโมชั่นลับจาก Lazada</h1>
-  <p>เปิดแอปเพื่อดูดีลพิเศษ</p>
-  <a href="lazada://s.lazada.co.th/s.MRiSA?cc" class="button">👉 เปิดในแอปลาซาด้า</a>
-  <p style="margin-top:20px;">ถ้าไม่ได้ ให้ <a href="https://s.lazada.co.th/s.MRiSA?cc">คลิกที่นี่</a> เพื่อเปิดในเว็บ</p>
+  <h2>กำลังเปลี่ยนเส้นทางไปยังแอปลาซาด้า...</h2>
 </body>
 </html>
