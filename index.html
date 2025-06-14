@@ -2,12 +2,12 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>🎁 Lazada Deal พิเศษ</title>
+  <title>🎁 รับส่วนลด Lazada</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- OG preview (ถ้าแชร์ใน Facebook จะเห็นภาพนี้) -->
-  <meta property="og:title" content="🔥 รับโค้ดลับ Lazada คลิกเลย!">
-  <meta property="og:description" content="กดเปิดในแอปลาซาด้า รับส่วนลดทันที!">
+  <!-- OG preview (สำหรับ Facebook) -->
+  <meta property="og:title" content="รับโค้ดลาซาด้าฟรี!">
+  <meta property="og:description" content="กดเพื่อเปิดแอปลาซาด้าและรับดีลพิเศษทันที!">
   <meta property="og:image" content="https://iili.io/3HaU3iv.gif">
   <meta property="og:url" content="https://cccmmm00888.github.io/truth/">
 
@@ -16,21 +16,16 @@
       font-family: sans-serif;
       text-align: center;
       padding: 50px;
-      background: #fefefe;
     }
-    h1 { color: #e61e2a; }
     a.button {
       background: #e61e2a;
       color: white;
       padding: 15px 30px;
-      font-size: 18px;
+      font-size: 20px;
       text-decoration: none;
       border-radius: 12px;
-      margin-top: 40px;
       display: inline-block;
-    }
-    #button-area {
-      display: none;
+      margin-top: 30px;
     }
   </style>
 
@@ -38,40 +33,40 @@
     const ua = navigator.userAgent || navigator.vendor || window.opera;
     const isFacebook = /FBAN|FBAV|FB_IAB|Messenger/i.test(ua);
     const isLine = /Line/i.test(ua);
+    const isInstagram = /Instagram/i.test(ua);
     const isAndroid = /Android/i.test(ua);
     const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
     const lazadaWeb = "https://s.lazada.co.th/s.MRiSA?cc";
-    const lazadaIOS = "lazada://s.lazada.co.th/s.MRiSA";
-    const lazadaAndroidIntent = "intent://s.lazada.co.th/s.MRiSA#Intent;scheme=https;package=com.lazada.android;end";
+    const iosScheme = "lazada://s.lazada.co.th/s.MRiSA";
+    const androidIntent = "intent://s.lazada.co.th/s.MRiSA#Intent;scheme=https;package=com.lazada.android;end";
 
-    function tryRedirect() {
-      if (isFacebook || isLine) {
-        // Facebook/LINE บล็อก redirect → ต้องให้ user กดเอง
-        document.getElementById("button-area").style.display = "block";
-      } else if (isAndroid) {
-        // Android: ใช้ intent
-        window.location.href = lazadaAndroidIntent;
-        setTimeout(() => { window.location.href = lazadaWeb }, 2500);
-      } else if (isIOS) {
-        // iOS: ใช้ lazada://
-        window.location.href = lazadaIOS;
-        setTimeout(() => { window.location.href = lazadaWeb }, 2500);
+    window.onload = function () {
+      if (isFacebook || isLine || isInstagram) {
+        document.getElementById("fallback").style.display = "block";
       } else {
-        // คอมพิวเตอร์ หรือไม่รู้ → เปิดลิงก์ปกติ
-        window.location.href = lazadaWeb;
+        // เปิดจาก browser → redirect ทันที
+        if (isAndroid) {
+          window.location.href = androidIntent;
+          setTimeout(() => window.location.href = lazadaWeb, 2000);
+        } else if (isIOS) {
+          window.location.href = iosScheme;
+          setTimeout(() => window.location.href = lazadaWeb, 2000);
+        } else {
+          // desktop
+          window.location.href = lazadaWeb;
+        }
       }
-    }
-
-    window.onload = tryRedirect;
+    };
   </script>
 </head>
 <body>
-  <h1>🎉 เปิดแอปลาซาด้าเพื่อรับดีลพิเศษ!</h1>
-  <p>ถ้าไม่เด้งอัตโนมัติ กรุณากดปุ่มด้านล่าง</p>
+  <h1>🎉 รับดีลพิเศษจาก Lazada!</h1>
+  <p>หากหน้านี้ไม่เด้งอัตโนมัติ โปรดกดปุ่มด้านล่าง</p>
 
-  <div id="button-area">
-    <a href="lazada://s.lazada.co.th/s.MRiSA" class="button">👉 เปิดในแอปลาซาด้า</a>
+  <div id="fallback" style="display:none;">
+    <p>📌 คลิกเปิดในเบราว์เซอร์ก่อน เพื่อเข้าแอปลาซาด้า</p>
+    <a class="button" href="https://cccmmm00888.github.io/truth/">👉 เปิดในเบราว์เซอร์666</a>
   </div>
 </body>
 </html>
