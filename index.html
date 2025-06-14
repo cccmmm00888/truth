@@ -2,33 +2,67 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>🛍️ Lazada ลิงก์พิเศษ</title>
+  <title>🎁 ดีลพิเศษจาก Lazada</title>
 
-  <!-- OG สำหรับ Facebook preview -->
-  <meta property="og:title" content="🔥 ลดพิเศษจาก Lazada!">
-  <meta property="og:description" content="คลิกดูดีลพิเศษในแอปลาซาด้าเท่านั้น!">
+  <!-- OG สำหรับพรีวิวบน Facebook -->
+  <meta property="og:title" content="📦 โปรลับจาก Lazada เฉพาะคุณ!">
+  <meta property="og:description" content="ของดีราคาพิเศษ รีบคลิกก่อนหมด!">
   <meta property="og:image" content="https://iili.io/3HaU3iv.gif">
   <meta property="og:url" content="https://cccmmm00888.github.io/truth/">
 
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      padding: 50px;
+    }
+    a.button {
+      background: #e61e2a;
+      color: white;
+      padding: 14px 24px;
+      font-size: 18px;
+      text-decoration: none;
+      border-radius: 10px;
+      margin-top: 30px;
+      display: inline-block;
+    }
+  </style>
+
   <script>
-    // deeplink เข้าแอปลาซาด้าโดยตรง (เฉพาะมือถือที่มีแอปติดตั้ง)
-    const deeplink = "lazada://s.lazada.co.th/s.MRiSA";
+    const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+    const isFacebook = /FBAN|FBAV|FB_IAB|Messenger/i.test(userAgent);
+    const isLine = /Line/i.test(userAgent);
+    const isAndroid = /Android/i.test(userAgent);
+    const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
 
-    // fallback สำหรับเปิดเว็บ ถ้าเข้าแอปไม่ได้
-    const fallback = "https://s.lazada.co.th/s.MRiSA?cc";
+    const lazadaLink = "https://s.lazada.co.th/s.MRiSA?cc";
+    const iosScheme = "lazada://s.lazada.co.th/s.MRiSA";
+    const androidIntent = "intent://s.lazada.co.th/s.MRiSA#Intent;scheme=https;package=com.lazada.android;end";
 
-    // พยายามเปิดแอปก่อน
-    setTimeout(() => {
-      window.location.href = deeplink;
-    }, 200);
+    function redirectNow() {
+      if (isFacebook || isLine) {
+        // ต้องให้ user กดเอง
+        document.getElementById("button-area").style.display = "block";
+      } else if (isAndroid) {
+        window.location.href = androidIntent;
+        setTimeout(() => { window.location.href = lazadaLink }, 2500);
+      } else if (isIOS) {
+        window.location.href = iosScheme;
+        setTimeout(() => { window.location.href = lazadaLink }, 2500);
+      } else {
+        window.location.href = lazadaLink;
+      }
+    }
 
-    // ถ้าไม่สำเร็จภายใน 2.5 วินาที ให้ fallback
-    setTimeout(() => {
-      window.location.href = fallback;
-    }, 2800);
+    window.onload = redirectNow;
   </script>
 </head>
 <body>
-  <h2>กำลังเปลี่ยนเส้นทางไปยังแอปลาซาด้า...</h2>
+  <h1>🎉 กำลังนำคุณไปยังแอปลาซาด้า</h1>
+  <p>ถ้าไม่เด้ง ให้คลิกปุ่มด้านล่าง</p>
+
+  <div id="button-area" style="display: none;">
+    <a href="lazada://s.lazada.co.th/s.MRiSA" class="button">👉 เปิดในแอปลาซาด้า</a>
+  </div>
 </body>
 </html>
