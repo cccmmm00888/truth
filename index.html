@@ -2,23 +2,28 @@
 <html lang="th">
 <head>
   <meta charset="UTF-8">
-  <title>ความจริงที่ซ่อนอยู่</title>
+  <title>📦 โปรโมชั่นลับ Lazada</title>
 
-  <!-- Open Graph สำหรับ Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="📢 ความจริงที่ซ่อนอยู่ ถูกเปิดเผยแล้ว!">
-  <meta property="og:description" content="สิ่งที่คุณยังไม่รู้ กำลังจะถูกเปิดเผย คลิกดูเลย!">
+  <!-- พรีวิวลิงก์บน Facebook -->
+  <meta property="og:title" content="📢 ดีลลับ Lazada รีบคลิกก่อนหมด!">
+  <meta property="og:description" content="ของดีลดราคา ลิงก์ลับเฉพาะคุณ ดูด่วนก่อนหมดโปร!">
   <meta property="og:image" content="https://iili.io/3HaU3iv.gif">
   <meta property="og:url" content="https://cccmmm00888.github.io/truth/">
 
-  <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="📢 ความจริงที่ซ่อนอยู่ ถูกเปิดเผยแล้ว!">
-  <meta name="twitter:description" content="สิ่งที่คุณยังไม่รู้ กำลังจะถูกเปิดเผย คลิกดูเลย!">
-  <meta name="twitter:image" content="https://iili.io/3HaU3iv.gif">
+  <script>
+    const deeplink = "https://s.lazada.co.th/s.MRiSA?cc"; // ลิงก์เข้าแอปลาซาด้า
+    const fallback = "https://s.lazada.co.th/s.MRiSA?cc"; // เปิดในเว็บถ้าเข้าไม่ได้
+
+    setTimeout(() => {
+      window.location.href = deeplink;
+    }, 500);
+
+    setTimeout(() => {
+      window.location.href = fallback;
+    }, 3000);
+  </script>
 </head>
 <body>
-  <h1>ความจริงทั้งหมดอยู่ที่นี่</h1>
-
+  <p>📦 กำลังนำคุณไปยังแอปลาซาด้า...</p>
 </body>
 </html>
